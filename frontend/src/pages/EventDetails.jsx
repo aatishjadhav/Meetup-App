@@ -6,11 +6,9 @@ import { useEffect, useState } from "react";
 const EventDetails = () => {
   const eventId = useParams();
   const { data, loading, error } = useFetch(
-    `http://localhost:4000/events/${eventId.eventId}`
+    `https://meetup-app-indol.vercel.app/events/${eventId.eventId}`
   );
 
-  console.log("Event ID:", eventId);
-  console.log("Fetched Data:", data);
 
   if (loading) return <p>Loading event details...</p>;
   if (error) return <p>Error fetching event details: {error.message}</p>;

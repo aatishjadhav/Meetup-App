@@ -7,17 +7,13 @@ const Home = () => {
   const [search, setSearch] = useState("");
   const { data, loading, error } = useFetch(
     type === "Both"
-      ? "http://localhost:4000/events"
-      : `http://localhost:4000/events/types/${type}`
+      ? "https://meetup-app-indol.vercel.app/events"
+      : `https://meetup-app-indol.vercel.app/events/types/${type}`
   );
 
   const filteredEvents = data?.events?.filter((event) =>
     event.eventName.toLowerCase().includes(search.toLowerCase())
   );
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error while fetching events</p>;
